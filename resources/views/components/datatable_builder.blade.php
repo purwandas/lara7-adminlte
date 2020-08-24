@@ -87,9 +87,9 @@ $exceptForeign = @$exceptForeign ?? [];
 	@if(@$setupDatatableBuilder['useDatatableAction'])
 		@if(@$setupDatatableBuilder['creatable'])
 			@if($useModal)
-			<button class="btn btn-sm btn-primary" onclick="addModal{{$class}}()" data-toggle="modal" data-target="#modalForm{{$class}}">{!! getSvgIcon('cil-plus','mt-m-2') !!} Create</button>
+			<button class="btn btn-sm btn-primary" onclick="addModal{{$class}}()" data-toggle="modal" data-target="#modalForm{{$class}}">{!! getSvgIcon('fa-plus','mt-m-2') !!} Create</button>
 			@else
-			<a href="{{route($newRoute. '.create')}}" class="btn btn-sm btn-primary">{!! getSvgIcon('cil-plus','mt-m-2') !!} Create</a>
+			<a href="{{route($newRoute. '.create')}}" class="btn btn-sm btn-primary">{!! getSvgIcon('fa-plus','mt-m-2') !!} Create</a>
 			@endif
 		@endif
 	@endif
@@ -98,7 +98,7 @@ $exceptForeign = @$exceptForeign ?? [];
 			@include('components.fn_upload', ['name' => $name, 'form_url' => route($cRoute.'.import'), 'template_url' => route($cRoute.'.import-template')])
 		@endif
 		@if($useUtilities)
-			<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{!! getSvgIcon('cil-cloud-download','mt-m-2') !!} Export</button>
+			<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{!! getSvgIcon('fa-download','mt-m-2') !!} Export</button>
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				@if( in_array('export-xls', $button) || ($useUtilities && count($button) == 0) )
 					@include('components.fn_download', ['url' => $cRoute.'.export-xls', 'type' => 'xls', 'icon' => 'fas fa-file-excel'])
@@ -111,7 +111,7 @@ $exceptForeign = @$exceptForeign ?? [];
 		@if( in_array('job-status', $button) || ($useUtilities && count($button) == 0) )
 			@include('components.job_trace_modal', ['buttonId' => 'jobTrace', 'name' => $class, 'module' => @$module])
 			<button class="btn btn-sm btn-danger" id="jobTrace" onclick="showJobStatus()">
-				{!! getSvgIcon('cil-featured-playlist','mt-m-2') !!} Queue Status
+				{!! getSvgIcon('fa-list','mt-m-2') !!} Queue Status
 			</button>
 		@endif
 		

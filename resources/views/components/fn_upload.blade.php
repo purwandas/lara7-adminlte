@@ -43,7 +43,7 @@ if (count(@$sample_data) > 0) {
 @endphp
 
 <button id="upload-button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#upload-modal" onclick="$('.fileinput-remove-button').click();">
-  {!! getSvgIcon('cil-cloud-upload','mt-m-2') !!}
+  {!! getSvgIcon('fa-upload','mt-m-2') !!}
   Import
 </button>
 
@@ -62,11 +62,11 @@ if (count(@$sample_data) > 0) {
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <a href="{{ $template_url }}" target="_blank" class="btn btn-sm btn-info" style="margin-bottom: 10px;">
-                        {!! getSvgIcon('cil-cloud-download','mt-m-2') !!}
+                        {!! getSvgIcon('fa-download','mt-m-2') !!}
                         Download Format
                     </a>
                     {{-- <button class="btn btn-sm btn-info" onclick="downloadTemplate('{{$id}}TemplateButton','{{ $template_url }}')" id="{{$id}}TemplateButton" style="margin-bottom: 10px;">
-                        {!! getSvgIcon('cil-cloud-download','mt-m-2') !!}
+                        {!! getSvgIcon('fa-download','mt-m-2') !!}
                         {{ 'Download Format' }}
                     </button> --}}
                     {{ Form::fileInput('file',null,['useLabel' => false,'inputContainerClass' => 'col-md-12','pluginOptions' => [
@@ -128,49 +128,49 @@ if (count(@$sample_data) > 0) {
         });
     });
 
-    function downloadTemplate(elementId, url) {
-        var element = $("#"+elementId);
-        var icon = $("#"+elementId+"Icon");
-        if (element.attr('disabled') != 'disabled') {
-            var thisClass = icon.attr('class');
+    // function downloadTemplate(elementId, url) {
+    //     var element = $("#"+elementId);
+    //     var icon = $("#"+elementId+"Icon");
+    //     if (element.attr('disabled') != 'disabled') {
+    //         var thisClass = icon.attr('class');
 
-            var filters = {};
-            var filterForm = $('#filter_form{{$name}}').serializeArray();
-            $.each(filterForm, function(key, val){
-                if (val.name != "_token" && val.value != "") {
-                    filters[val.name] = val.value;
-                }
-            });
+    //         var filters = {};
+    //         var filterForm = $('#filter_form{{$name}}').serializeArray();
+    //         $.each(filterForm, function(key, val){
+    //             if (val.name != "_token" && val.value != "") {
+    //                 filters[val.name] = val.value;
+    //             }
+    //         });
 
-            $.ajax({
-                type: 'GET',
-                url: url,
-                data: filters,
-                beforeSend: function()
-                {
-                    element.attr('disabled', 'disabled');
-                    icon.attr('class', 'fa fa-spinner fa-spin');
-                },
-                success: function (data) {
-                    element.removeAttr('disabled');
-                    icon.attr('class', thisClass);
-                    var a = $('#linkGenerator');
-                    a.attr('href',data.url);
-                    document.getElementById('linkGenerator').click();
-                    a.attr('href','#');
-                },
-                error: function(xhr, textStatus, errorThrown){
-                    element.removeAttr('disabled');
-                    icon.attr('class', thisClass);
-                    swal({
-                        title: "Gagal melakukan request",
-                        text: "Silahkan hubungi admin",
-                        type: "error"
-                    });
-                }
-            });
-        }
-    }
+    //         $.ajax({
+    //             type: 'GET',
+    //             url: url,
+    //             data: filters,
+    //             beforeSend: function()
+    //             {
+    //                 element.attr('disabled', 'disabled');
+    //                 icon.attr('class', 'fa fa-spinner fa-spin');
+    //             },
+    //             success: function (data) {
+    //                 element.removeAttr('disabled');
+    //                 icon.attr('class', thisClass);
+    //                 var a = $('#linkGenerator');
+    //                 a.attr('href',data.url);
+    //                 document.getElementById('linkGenerator').click();
+    //                 a.attr('href','#');
+    //             },
+    //             error: function(xhr, textStatus, errorThrown){
+    //                 element.removeAttr('disabled');
+    //                 icon.attr('class', thisClass);
+    //                 swal({
+    //                     title: "Gagal melakukan request",
+    //                     text: "Silahkan hubungi admin",
+    //                     type: "error"
+    //                 });
+    //             }
+    //         });
+    //     }
+    // }
 
 </script>
 @endprepend

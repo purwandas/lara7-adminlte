@@ -852,7 +852,7 @@ if(!function_exists('getFaIcon')){
 	function getFaIcon($icon, $addClass = '') {
 		return 
 		"
-			<i class='fas fa-plus'></i>
+			<i class='fas $icon'></i>
 		";
 	}
 }

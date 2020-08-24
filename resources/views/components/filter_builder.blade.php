@@ -16,7 +16,7 @@ $rules = array_merge($rules, $custom);
 @endphp
 
 @if($useModal)
-<button type="button" data-toggle="modal" data-target="#filter-modal" class="btn btn-warning btn-sm act-btn display-hide">{!! getSvgIcon('cil-filter','mt-m-2') !!} Filter</button>
+<button type="button" data-toggle="modal" data-target="#filter-modal" class="btn btn-warning btn-sm act-btn display-hide">{!! getSvgIcon('fa-filter','mt-m-2') !!} Filter</button>
 
 <div class="modal fade" id="filter-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
